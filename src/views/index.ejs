@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Formulario</title>
+  </head>
+  <body>
+    <div class="container col-6">
+      <h1 class="my-4">Formulario</h1>
+      <form id="contactForm" action="/submit" method="POST">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Rut</label>
+          <input type="text" class="form-control" id="rut" name="rut" placeholder="Rut">
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Curso</label>
+          <input type="text" class="form-control" id="curso" name="curso" placeholder="Curso">
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nivel</label>
+          <input type="text" class="form-control" id="nivel" name="nivel" placeholder="Nivel">
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+      
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <!-- <script>
+      document.getElementById("contactForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+    
+        // Obtén los valores del formulario
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+    
+        // Realiza la petición a tu servidor o API aquí
+        fetch("/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email, message }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.text();
+            } else {
+              throw new Error("Error en la solicitud");
+            }
+          })
+          .then((data) => {
+            console.log("Datos guardados correctamente:", data);
+            // Muestra un mensaje de éxito o realiza otras acciones
+          })
+          .catch((error) => {
+            console.error("Error al guardar los datos:", error);
+            // Muestra un mensaje de error o realiza otras acciones
+          });
+      });
+    </script> -->
+  </body>
+</html>
