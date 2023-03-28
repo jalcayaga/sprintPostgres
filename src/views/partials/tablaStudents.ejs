@@ -1,0 +1,58 @@
+<div class="col-8">
+    <h4 class="my-4 text-white text-center">Estudiantes</h4>
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr class="text-success">
+          <th>N°</th>
+          <th>Nombre</th>
+          <th>Rut</th>
+          <th>Curso</th>
+          <th>Nivel</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% estudiantes.forEach((estudiante) => { %>
+        <tr
+          data-id="<%= estudiante.id %>"
+          data-name="<%= estudiante.nombre %>"
+          data-rut="<%= estudiante.rut %>"
+          data-curso="<%= estudiante.curso %>"
+          data-nivel="<%= estudiante.nivel %>"
+        >
+          <td class="text-warning"><%= estudiante.id %></td>
+          <td><%= estudiante.nombre %></td>
+          <td><%= estudiante.rut %></td>
+          <td><%= estudiante.curso %></td>
+          <td><%= estudiante.nivel %></td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-warning btn-edit btn-sm"
+              data-id="<%= estudiante.id %>"
+            >
+              <i class="bi bi-pencil"></i>
+            </button>
+          </td>
+          <td>
+            <form
+              id="delete-form-<%= estudiante.id %>"
+              action="/delete/<%= estudiante.id %>"
+              method="POST"
+              style="display: none"
+            ></form>
+            <button
+              form="delete-form-<%= estudiante.id %>"
+              type="submit"
+              class="btn btn-danger btn-sm"
+              title="Eliminar"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+</div>

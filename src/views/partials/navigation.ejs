@@ -1,0 +1,60 @@
+<!-- ----------------------------------------------------------------------- -->
+<!--                                 navbar                                  -->
+<!-- ----------------------------------------------------------------------- -->
+
+<header class="mt-2 p-2 text-bg-dark">
+  <div class="container">
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <!-- Logo -->
+      <a href="/" class="navbar-brand">
+        <img src="img/logo.png" alt="Logo" width="50" height="24" class="d-inline-block align-text-top" />
+        <span>Sprint Progres</span>
+      </a>
+      <!-- Menu hamburguesa -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>      
+      <!-- Menu -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/">Home</a>
+          </li>
+        </ul>
+      </div>
+      <!-- -------------------------------- login -------------------------------- -->
+      <div class="mx-3 text-end d-flex">
+        <div class="dropdown">
+          <button type="button" class="btn btn-outline-warning me-2 dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-offset="10,20">
+            Login
+          </button>                   
+          <div class="dropdown-menu dropstart bg-dark text-white">
+            <form class="px-2 py-2">
+              <div class="mb-3">
+                <label for="exampleDropdownFormEmail1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+              </div>
+              <div class="mb-3">
+                <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+              </div>
+              <div class="mb-3">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                  <label class="form-check-label" for="dropdownCheck">
+                    Recordarme
+                  </label>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success btn-sm">Iniciar Sesión</button>
+            </form>
+            <div class="dropdown-divider text-white"></div>
+            <a class="dropdown-item text-warning" href="#">Eres nuevo por acá?</a>
+            <a class="dropdown-item text-white" href="#">Olvidaste la contraseña?</a>
+          </div>
+        <button type="button" class="btn btn-outline-success btn-sm">Registrarse</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</header>

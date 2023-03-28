@@ -1,0 +1,67 @@
+<div
+  class="modal fade"
+  id="editStudentModal"
+  tabindex="-1"
+  aria-labelledby="editStudentModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editStudentModalLabel">
+          Editar Estudiante
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="editForm" action="/students/update/:id" method="post">
+          <!-- campo de entrada oculto con el id del estudiante que se está editando -->
+          <input type="hidden" id="editId" />
+          <div class="mb-3">
+            <label for="editName" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="editName" name="name" />
+          </div>
+          <div class="mb-3">
+            <label for="editRut" class="form-label">Rut</label>
+            <input type="text" class="form-control" id="editRut" name="rut" />
+          </div>
+          <div class="mb-3">
+            <label for="editCurso" class="form-label">Curso</label>
+            <input
+              type="text"
+              class="form-control"
+              id="editCurso"
+              name="curso"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="editNivel" class="form-label">Nivel</label>
+            <input
+              type="text"
+              class="form-control"
+              id="editNivel"
+              name="nivel"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="submit" class="btn btn-warning">
+              Guardar cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
