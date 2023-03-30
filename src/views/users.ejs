@@ -10,13 +10,18 @@
 
     <div class="container">
       <div class="row mt-4">
-        <h1>Bienvenidos a la APP Postgres</h1>
+        <!-- Crear estudiante -->
+        <%- include('partials/crearUser') %>
+        <!-- tabla -->
+        <%- include('partials/tablaUsers') %>
       </div>
     </div>
     
     <!-- footer -->
     <%- include('partials/footer') %>
-   
+
+    <!-- Edit Student Modal -->
+    <%- include('partials/modalUser') %>
+
     <!-- scripts -->
-    
     <%- include('partials/scriptsUsers') %>

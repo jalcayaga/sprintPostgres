@@ -11,16 +11,14 @@ body {
   color: white;
 }
 
-#navbarNav a:hover{
+#navbarNav li:hover{
   background-color: #ffca2d; 
   color: #191c32!important;
-  transition: all 0.2s ease-in-out;
-  padding: 5px !important;
+  transition: all 0.3s ease-in-out;
+  padding: 0.1px !important;
+  height: auto;
+  border-radius: 10%;
 }
-/* -------------------------------------------------------------------------- */
-/*                                  Carrusel                                  */
-/* -------------------------------------------------------------------------- */
-
 
 .redsocial i {
   color: #ffca2d;

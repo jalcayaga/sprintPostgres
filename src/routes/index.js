@@ -1,79 +1,79 @@
-import express from 'express';
+import express from "express";
+import session from "express-session"
+import { checkAuth } from '../controllers/user.controller.js';
+
+import { renderIndexPage } from "../controllers/index.controller.js";
+import {
+  renderStudentsPage,
+  postStudents,
+  getId,
+  studentUpdate,
+  studentDelete,
+} from "../controllers/student.controller.js";
+
+import {
+  renderBankPage,
+  postTransaccion,
+  postCuenta,
+} from "../controllers/bank.controller.js";
+
+import {
+  renderUserPage,
+  postUser,
+  userDelete,
+  userUpdate,
+  loginUser,
+  logoutUser,
+} from "../controllers/user.controller.js"
+
+
 const router = express.Router();
-import pool from "../config/db.js";
+
 
 // Ruta para mostrar la página principal
-router.get("/", async (req, res) => {
-  try {
-    const estudiantes = await pool.query("SELECT * FROM estudiantes");
-    res.render("index", { estudiantes: estudiantes.rows });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error al cargar la página");
-  }
-});
+router.get("/", renderIndexPage);
+/* ---------------------------------- Users ---------------------------------- */
+// Ruta para mostrar la página principal Users
+router.get("/users", renderUserPage);
+/* ---------------------------------- bank ---------------------------------- */
+// Ruta para mostrar la página principal del banco
+router.get("/bank", checkAuth, renderBankPage);
+/* ---------------------------------- students ---------------------------------- */
+// Ruta para students
+router.get("/students", checkAuth, renderStudentsPage);
 
 //Ruta para mandar datos a postgres
-router.post("/", async (req, res) => {
-  try {
-    const { name, rut, curso, nivel } = req.body;
-    console.log(req.body);
-    const newEstudiante = await pool.query(
-      "INSERT INTO estudiantes (nombre, rut, curso, nivel) VALUES ($1, $2, $3, $4) RETURNING *",
-      [name, rut, curso, nivel]
-    );
-    res.redirect("/");
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Error del servidor en POST");
-  }
-});
-
+router.post("/students", checkAuth, postStudents);
 
 // Ruta GET para obtener ID
-router.get("/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const estudiante = await pool.query(
-      "SELECT * FROM estudiantes WHERE id = $1 LIMIT 100",
-      [id]
-    );
-    res.render("edit", { estudiante: estudiante.rows[0] });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error al cargar el estudiante");
-  }
-});
+router.get("/students/:id", checkAuth, getId);
 
 // Ruta para actualizar un estudiante
-router.post("/update/:id", async (req, res) => {
-  try {
-    const id = parseInt(req.params.id);
-    if (isNaN(id)) {
-      throw new Error("Invalid ID");
-    }
-    const { name, rut, curso, nivel } = req.body;
-    await pool.query(
-      "UPDATE estudiantes SET nombre = $1, rut = $2, curso = $3, nivel = $4 WHERE id = $5",
-      [name, rut, curso, nivel, id]
-    );
-    res.redirect("/");
-  } catch (err) {
-    console.error(err);
-    res.status(500).send(`Error al actualizar el estudiante: ${err.message}`);
-  }
-});
+router.post("/students/update/:id", checkAuth, studentUpdate);
 
 // Ruta para eliminar un estudiante
-router.post("/delete/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    await pool.query("DELETE FROM estudiantes WHERE id = $1", [id]);
-    res.redirect("/students");
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error al eliminar el estudiante");
-  }
-});
+router.post("/students/delete/:id", checkAuth, studentDelete);
+
+/* ---------------------------------- bank ---------------------------------- */
+// Escribir datos en TABLA Transacciones
+router.post("/bank/transaccion", checkAuth, postTransaccion);
+// Escribir datos en TABLA Cuenta
+router.post("/bank/cuenta", checkAuth, postCuenta)
+
+/
+/* ---------------------------------- Users ---------------------------------- */
+// Ruta para crear usuario
+router.post("/users", postUser);
+
+// Ruta para actualizar un usuario
+router.post("/users/update/:id", userUpdate);
+
+// Ruta para eliminar un usuario
+router.post("/users/delete/:id", userDelete);
+
+// Ruta para validar el inicio de sesión
+router.post("/login", loginUser);
+
+router.get('/logout', logoutUser);
 
 export default router;

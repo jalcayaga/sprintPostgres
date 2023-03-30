@@ -1,0 +1,32 @@
+<!-- Modal de confirmación de eliminación -->
+
+<div 
+    class="modal fade" 
+    id="confirm-delete-modal" 
+    tabindex="-1" 
+    role="dialog" 
+    aria-labelledby="confirm-delete-modal-title" 
+    aria-hidden="true">
+    <div 
+    class="modal-dialog" 
+    role="document">
+        <div class="modal-content bg-dark">
+            <div class="modal-header border-0">
+                <h5 class="modal-title text-warning" id="confirm-delete-modal-title">
+                    ¿Está seguro que desea eliminar este estudiante?</h5>
+                <button 
+                type="button" 
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal" 
+                aria-label="Cerrar">
+            </button>
+            </div>
+            <div class="modal-footer border-0">
+                <form id="delete-form" action="" method="POST">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

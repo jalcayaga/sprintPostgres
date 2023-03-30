@@ -1,0 +1,86 @@
+<div class="col-4">
+  <!-- ---------------------------- Crear Cuenta ----------------------------- -->
+  <h4 class="my-4 text-white text-center">Crear cuenta</h4>
+  <form method="POST" action="/bank/cuenta">
+    <div class="mb-3">
+      <label for="id" class="form-label">Cuenta:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="id"
+        name="id"
+        placeholder="N° Cuenta"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="saldo" class="form-label">Saldo:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="saldo"
+        name="saldo"
+        placeholder="Saldo"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-warning">Crear cuenta</button>
+  </form>
+  <!-- ------------------------ Registrar Transaccion ------------------------ -->
+  <h4 class="my-4 text-white text-center">Registrar transacción</h4>
+  <form method="POST" action="/bank/transaccion">
+    <div class="mb-3">
+      <label for="tipo" class="form-label">Tipo:</label>
+      <select id="tipo" name="tipo" class="form-select">
+        <option value="deposito">Depósito</option>
+        <option value="retiro">Retiro</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="cuenta" class="form-label">Cuenta:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="cuenta"
+        name="cuenta"
+        placeholder="Cuenta"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="descripcion"
+        name="descripcion"
+        placeholder="Descripción"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="fecha" class="form-label">Fecha:</label>
+      <input
+        type="date"
+        class="form-control"
+        id="fecha"
+        name="fecha"
+        placeholder="Fecha"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="monto" class="form-label">Monto:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="monto"
+        name="monto"
+        placeholder="Monto"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-warning">Registrar transacción</button>
+  </form>
+</div>

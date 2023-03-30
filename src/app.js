@@ -1,4 +1,5 @@
 import express from "express";
+import session from "express-session";
 import path from "path";
 import morgan from "morgan";
 import routes from "./routes/index.js";
@@ -17,6 +18,13 @@ app.set("view engine", "ejs");
 // Middlewares
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
+
+// Session middleware
+app.use(session({
+  secret: 'mysecretkey',
+  resave: false,
+  saveUninitialized: false
+}));
 
 // global variables
 app.use((req, res, next) => {

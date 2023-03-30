@@ -1,0 +1,48 @@
+<div class="col-4">
+    <h4 class="my-4 text-white text-center">Crear usuario</h4>
+    <form method="POST" action="/users">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          name="nombre"
+          placeholder="Nombre"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="apellido"
+          name="apellido"
+          placeholder="Apellido"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password">Contraseña</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+      <div class="mb-3">
+        <label for="confirm-password">Confirmar Contraseña</label>
+        <input type="password" class="form-control" id="confirm-password" name="confirmPassword" required>
+      </div>
+      <button type="submit" class="btn btn-warning">Crear usuario</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,58 @@
+<!-- ---------------------------- Tabla cuentas ---------------------------- -->
+<div class="col-8">
+   <h4 class="my-4 text-white text-center">Cuentas</h4>
+<table class="table table-dark table-striped table-hover">
+   <thead>
+     <tr class="text-warning">
+       <th>N° Cuenta</th>
+       <th>Saldo</th>
+     </tr>
+   </thead>
+   <tbody>
+     <% cuentas.forEach((cuenta) => { %>
+     <tr
+       data-id="<%= cuenta.id %>"
+       data-saldo="<%= cuenta.saldo %>"
+     >
+       <td class="text-warning"><%= cuenta.id %></td>
+       <td><%= cuenta.saldo %></td>
+     </tr>
+     <% }) %>
+   </tbody>
+ </table>
+ 
+ 
+
+<!-- -------------------------- Tabla transaccion -------------------------- -->
+
+   <h4 class="my-4 text-white text-center">Transacciones</h4>
+   <table class="table table-dark table-striped table-hover">
+     <thead>
+       <tr class="text-warning">
+         <th>N°</th>
+         <th>Descripción</th>
+         <th>Fecha</th>
+         <th>Monto</th>
+         <th>Cuenta</th>
+       </tr>
+     </thead>
+     <tbody>
+       <% transacciones.forEach((transaccion) => { %>
+       <tr
+         data-id="<%= transaccion.id %>"
+         data-descripcion="<%= transaccion.descripcion %>"
+         data-fecha="<%= transaccion.fecha %>"
+         data-monto="<%= transaccion.monto %>"
+         data-cuenta="<%= transaccion.cuenta_id %>"
+       >
+         <td class="text-warning"><%= transaccion.id %></td>
+         <td><%= transaccion.descripcion.substring(0, 30) + (transaccion.descripcion.length > 30 ? '...' : '') %></td>
+         <td><%= new Date(transaccion.fecha).toLocaleDateString() %></td>
+         <td><%= transaccion.monto %></td>
+         <td><%= transaccion.cuenta_id %></td>
+       </tr>
+       <% }) %>
+     </tbody>
+   </table>
+ </div>
+ 

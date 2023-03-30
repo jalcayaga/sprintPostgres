@@ -1,0 +1,66 @@
+<!-- ------------------------------ Bootstrap JS ---------------------------- -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<!-- Script para modal de delete Students -->
+<script>
+    const deleteButtons = document.querySelectorAll('.btn-delete');
+    const deleteForm = document.getElementById('delete-form');
+    const confirmDeleteModal = document.getElementById('confirm-delete-modal');
+  
+    deleteButtons.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault(); // Previene que el formulario se envíe automáticamente
+        const tr = event.target.closest('tr');
+        const id = tr.getAttribute('data-id');
+        deleteForm.action = `/students/delete/${id}`;
+        const confirmDeleteButton = confirmDeleteModal.querySelector('.btn-danger');
+        confirmDeleteButton.addEventListener('click', () => {
+          deleteForm.submit(); // Envía el formulario manualmente al hacer clic en "Eliminar"
+        });
+        const modal = new bootstrap.Modal(confirmDeleteModal);
+        document.getElementById("confirm-delete-modal")
+        modal.show(); // Muestra el modal de confirmación
+      });
+    });
+</script>
+  
+  
+<!-- Script para modal de editar -->
+<script>
+    document.querySelectorAll(".btn-edit").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const tr = e.target.closest("tr");
+        const studentId = tr.dataset.id;
+        const studentName = tr.dataset.name;
+        const studentRut = tr.dataset.rut;
+        const studentCurso = tr.dataset.curso;
+        const studentNivel = tr.dataset.nivel;
+
+        // Completa el formulario del modal con los datos del estudiante
+        const editId = document.getElementById("editId");
+        editId.value = studentId;
+        const editName = document.getElementById("editName");
+        editName.value = studentName;
+        const editRut = document.getElementById("editRut");
+        editRut.value = studentRut;
+        const editCurso = document.getElementById("editCurso");
+        editCurso.value = studentCurso;
+        const editNivel = document.getElementById("editNivel");
+        editNivel.value = studentNivel;
+
+        // Actualiza el action del formulario con el ID del estudiante que se está editando
+        const editForm = document.getElementById("editForm");
+        editForm.action = `/students/update/${studentId}`;
+
+        // Muestra el modal
+        const editModal = new bootstrap.Modal(
+          document.getElementById("editStudentModal")
+        );
+        editModal.show();
+      });
+    });
+</script>
+
+</body>
+</html>
